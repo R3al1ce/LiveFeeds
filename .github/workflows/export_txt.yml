@@ -15,6 +15,7 @@ jobs:
       
     - name: Combine TXT files
       run: |
+        cd main/livefeeds/2024/04
         cat *.txt > combined.txt
         echo "Combined TXT files"
       
