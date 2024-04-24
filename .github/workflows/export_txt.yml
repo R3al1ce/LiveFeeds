@@ -1,1 +1,27 @@
+name: Export TXT Files
 
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Combine TXT files
+      run: |
+        cat *.txt > combined.txt
+        echo "Combined TXT files"
+      
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add combined.txt
+        git commit -m "Auto-combine TXT files"
+        git push
